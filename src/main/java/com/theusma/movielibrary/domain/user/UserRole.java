@@ -1,6 +1,7 @@
-package com.theusma.movielibrary.entities.user;
+package com.theusma.movielibrary.domain.user;
 
 import lombok.Getter;
+
 
 @Getter
 public enum UserRole {

@@ -1,6 +1,6 @@
 package com.theusma.movielibrary.controllers;
 
-import com.theusma.movielibrary.entities.movie.Movie;
+import com.theusma.movielibrary.domain.movie.Movie;
 import com.theusma.movielibrary.services.MovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

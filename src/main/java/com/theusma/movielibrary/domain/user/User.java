@@ -1,4 +1,4 @@
-package com.theusma.movielibrary.entities.user;
+package com.theusma.movielibrary.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,6 +29,11 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+    public User(String username, String password, UserRole role){
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;

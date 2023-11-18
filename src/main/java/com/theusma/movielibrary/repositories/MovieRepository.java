@@ -1,6 +1,6 @@
 package com.theusma.movielibrary.repositories;
 
-import com.theusma.movielibrary.entities.movie.Movie;
+import com.theusma.movielibrary.domain.movie.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

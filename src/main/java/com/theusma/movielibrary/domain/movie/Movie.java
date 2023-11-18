@@ -1,4 +1,4 @@
-package com.theusma.movielibrary.entities.movie;
+package com.theusma.movielibrary.domain.movie;
 
 
 import jakarta.persistence.*;

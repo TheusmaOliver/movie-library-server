@@ -1,6 +1,6 @@
 package com.theusma.movielibrary.services;
 
-import com.theusma.movielibrary.entities.movie.Movie;
+import com.theusma.movielibrary.domain.movie.Movie;
 import com.theusma.movielibrary.repositories.MovieRepository;
 import org.springframework.stereotype.Service;
 
