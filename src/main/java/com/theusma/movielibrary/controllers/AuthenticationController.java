@@ -6,6 +6,8 @@ import com.theusma.movielibrary.services.AuthorizationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,15 @@ public class AuthenticationController {
     @Autowired
     private AuthorizationService authorizationService;
 
+    @Autowired
+    AuthenticationManager authenticationManager;
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@RequestBody @Valid UserRegisterDto data){
+        var usernamePassword =  new UsernamePasswordAuthenticationToken(data.username(), data.password());
+        var auth = this.authenticationManager.authenticate(usernamePassword);
+        return ResponseEntity.ok().build();
+    }
     @PostMapping("/register")
     public ResponseEntity<Object> userRegister(@RequestBody @Valid UserRegisterDto data ){
         var newUser = authorizationService.userRegister(data);
@@ -33,4 +44,6 @@ public class AuthenticationController {
         if(Objects.equals(newUser, "User already exists")) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok().build();
     }
+
+
 }
