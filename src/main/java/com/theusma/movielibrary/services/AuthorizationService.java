@@ -1,6 +1,7 @@
 package com.theusma.movielibrary.services;
 
-import com.theusma.movielibrary.domain.user.RegisterDto;
+import com.theusma.movielibrary.domain.user.AdminRegisterDto;
+import com.theusma.movielibrary.domain.user.UserRegisterDto;
 import com.theusma.movielibrary.domain.user.User;
 import com.theusma.movielibrary.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,21 @@ public class AuthorizationService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
-    public String register(RegisterDto data){
+    public String userRegister(UserRegisterDto data){
+
+        if(userRepository.findByUsername(data.username()) != null)
+            return "User already exists";
+
+        String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
+        User newUser = new User( data.username(), encryptedPassword);
+
+        userRepository.save(newUser);
+
+        return "registered user";
+
+    }
+
+    public String adminRegister(AdminRegisterDto data){
 
         if(userRepository.findByUsername(data.username()) != null)
             return "User already exists";

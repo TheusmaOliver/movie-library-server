@@ -1,6 +1,7 @@
 package com.theusma.movielibrary.controllers;
 
-import com.theusma.movielibrary.domain.user.RegisterDto;
+import com.theusma.movielibrary.domain.user.AdminRegisterDto;
+import com.theusma.movielibrary.domain.user.UserRegisterDto;
 import com.theusma.movielibrary.services.AuthorizationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,15 @@ public class AuthenticationController {
     private AuthorizationService authorizationService;
 
     @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody @Valid RegisterDto data ){
-        var newUser = authorizationService.register(data);
+    public ResponseEntity<Object> userRegister(@RequestBody @Valid UserRegisterDto data ){
+        var newUser = authorizationService.userRegister(data);
+        if(Objects.equals(newUser, "User already exists")) return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/admin/register")
+    public ResponseEntity<Object> adminRegister(@RequestBody @Valid AdminRegisterDto data ){
+        var newUser = authorizationService.adminRegister(data);
         if(Objects.equals(newUser, "User already exists")) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok().build();
     }

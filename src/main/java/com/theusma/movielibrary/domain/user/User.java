@@ -1,9 +1,11 @@
 package com.theusma.movielibrary.domain.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +19,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "tb_users")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements UserDetails {
@@ -27,13 +30,20 @@ public class User implements UserDetails {
     private String username;
     private String password;
     @Enumerated(EnumType.STRING)
-    private UserRole role;
+    @NotNull
+    private UserRole role = UserRole.USER_ROLE;
 
     public User(String username, String password, UserRole role){
         this.username = username;
         this.password = password;
         this.role = role;
     }
+
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
