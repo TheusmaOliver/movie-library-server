@@ -27,8 +27,8 @@ public class SecurityConfigurations {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/register","/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/movies").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/admin/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/movies").hasRole("ADMIN")
                         .anyRequest().authenticated()
