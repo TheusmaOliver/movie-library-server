@@ -28,7 +28,7 @@ public class AuthorizationService implements UserDetailsService {
             return "User already exists";
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-        User newUser = new User( data.username(), encryptedPassword);
+        User newUser = new User( data.username(), data.email(), encryptedPassword);
 
         userRepository.save(newUser);
 
@@ -42,7 +42,7 @@ public class AuthorizationService implements UserDetailsService {
             return "User already exists";
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-        User newUser = new User( data.username(), encryptedPassword, data.role());
+        User newUser = new User( data.username(), encryptedPassword, data.email(), data.role());
 
         userRepository.save(newUser);
 

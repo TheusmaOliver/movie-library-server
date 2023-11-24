@@ -29,18 +29,21 @@ public class User implements UserDetails {
     private UUID id;
     private String username;
     private String password;
+    private String email;
     @Enumerated(EnumType.STRING)
     @NotNull
     private UserRole role = UserRole.USER_ROLE;
 
-    public User(String username, String password, UserRole role){
+    public User(String username, String password, String email, UserRole role){
         this.username = username;
         this.password = password;
+        this.email = email;
         this.role = role;
     }
 
-    public User(String username, String password){
+    public User(String username, String email, String password){
         this.username = username;
+        this.email = email;
         this.password = password;
     }
 
