@@ -1,6 +1,6 @@
 # Projeto Spring Boot: Biblioteca de Filmes
 
-Este é um projeto Spring Boot para uma biblioteca de filmes, que utiliza um banco de dados PostgreSQL para armazenamento, implementa autenticação e autorização com Spring Security usando JWT Token, permite a criação de contas de usuário com as roles 'user' e 'admin', consome um microserviço de envio de e-mail utilizando RabbitMQ esse e-mail é disparado quando o usuário cria uma conta e utiliza o Swagger para documentação da API.
+Este é um projeto Spring Boot para uma biblioteca de filmes, que utiliza um banco de dados PostgreSQL para armazenamento, implementa autenticação e autorização com Spring Security usando JWT Token, permite a criação de contas de usuário com as roles 'user' e 'admin', consome [esse microserviço](https://github.com/TheusmaOliver/email-service-rabbitmq) de envio de e-mail utilizando RabbitMQ esse e-mail é disparado quando o usuário cria uma conta e utiliza o Swagger para documentação da API.
 ## Tecnologias Utilizadas
 
 - Spring Boot
