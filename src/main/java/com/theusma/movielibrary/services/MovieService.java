@@ -5,6 +5,8 @@ import com.theusma.movielibrary.repositories.MovieRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MovieService {
@@ -20,5 +22,13 @@ public class MovieService {
 
     public List<Movie> getAllMovies(){
         return movieRepository.findAll();
+    }
+
+    public Optional<Movie> getOneMovie(UUID id)  {
+        return movieRepository.findById(id);
+    }
+
+    public void deleteMovie(UUID id){
+        movieRepository.deleteById(id);
     }
 }
